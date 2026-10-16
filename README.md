@@ -3,11 +3,6 @@
 Checks you in and out of the attendance portal on your schedule. It picks up your
 session automatically whenever you use the portal, so signing in once a month keeps it working.
 
-## Before installing (once, by whoever distributes it)
-1. Set `PORTAL_ORIGIN` in `config.js` and the same origin in `host_permissions` in `manifest.json`.
-2. Fill in the real check-in / check-out endpoints in `config.js` (copy them from DevTools).
-3. If remote-work applications have a status, update `isApproved` in `config.js`.
-
 ## Install
 1. Open `chrome://extensions`, turn on Developer mode.
 2. Click **Load unpacked** and pick this folder.
@@ -57,7 +52,3 @@ Other cases:
   Use a locked computer and a separate Chrome profile for work if that worries you.
 - Remove the extension to delete all stored data. Signing out of the portal does not revoke the
   token, so it stays valid until it expires.
-- Only install builds you got from a source you trust. A modified copy could send your token elsewhere.
-  Check `host_permissions` in `manifest.json` lists only your portal.
-- Check that your employer allows automated check-ins before using this. You are responsible for
-  the attendance records it creates.
