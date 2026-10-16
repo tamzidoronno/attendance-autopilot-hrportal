@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Attendance Autopilot</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="top">
+    <div class="title">
+      <h1>Attendance autopilot</h1>
+      <p id="who" class="muted"></p>
+    </div>
+    <label class="switch">
+      <input type="checkbox" id="enabled">
+      <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+      <span class="sr">Automatic check-in and check-out</span>
+    </label>
+  </header>
+
+  <section id="session" class="session" aria-live="polite"></section>
+
+  <section class="timecard" aria-labelledby="today-h">
+    <h2 id="today-h"></h2>
+    <div class="punches">
+      <div class="punch">
+        <span class="kind">Start</span>
+        <span class="time" id="in-time">–</span>
+      </div>
+      <div class="punch">
+        <span class="kind">End</span>
+        <span class="time" id="out-time">–</span>
+      </div>
+    </div>
+    <div class="summary">
+      <span>Total <strong id="att-total">–</strong></span>
+      <span id="att-status" class="muted"></span>
+    </div>
+  </section>
+
+  <section class="schedule" aria-labelledby="schedule-h">
+    <h2 id="schedule-h">Schedule</h2>
+    <div class="times">
+      <label>Check in <input type="time" id="checkinTime" required></label>
+      <label>Check out <input type="time" id="checkoutTime" required></label>
+    </div>
+    <div class="days" id="days" role="group" aria-label="Working days"></div>
+    <label class="option">
+      <input type="checkbox" id="remoteDays">
+      <span>
+        <strong>Also on remote-work application days</strong>
+        <small>On days not selected above, checks in and out if you have a remote-work application for that day.</small>
+      </span>
+    </label>
+    <p id="error" class="error" role="alert" hidden></p>
+  </section>
+
+  <section class="actions">
+    <button type="button" id="btn-in">Check in now</button>
+    <button type="button" id="btn-out">Check out now</button>
+  </section>
+
+  <details class="activity">
+    <summary>Activity</summary>
+    <ol id="log"></ol>
+  </details>
+
+  <footer class="muted">
+    Runs in the background even with no Chrome window open, as long as your computer is on and you're signed in to it.
+  </footer>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
